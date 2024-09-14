@@ -1,6 +1,6 @@
-# NECSC24
+# Nebraska Cyber Security Conference 2024 - Talk Slides &; Content
 
-## Nebraska Cyber Security Conference - Talk Slides &; Content
+## Attack Detect Defend - Jordan Drysdale & Kent Ickler
 
 This-two part talk is a condensed sample from a 16hr training course Jordan and Kent teach, offered by AntiSyphonTraining.com.
 
