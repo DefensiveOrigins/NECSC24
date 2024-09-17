@@ -175,7 +175,7 @@ SecurityEvent
 
 One last look! Here, we have an SSH server exposed to the Internet. At the time of this gig, Thailand was getting after it! 
 
-```
+```kusto
 let ipdata = externaldata(network:string,geoname_id:string,continent_code:string,continent_name:string,country_iso_code:string,country_name:string,is_anonymous_proxy:string,is_satellite_provider:string)
 [@"https://raw.githubusercontent.com/datasets/geoip2-ipv4/master/data/geoip2-ipv4.csv"];
 let IPs = Syslog
