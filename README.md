@@ -190,7 +190,7 @@ IPs
 | order by Count 
 ```
 
-
+[Event IDs Cheatsheet][evids2]
 
 Copyright - All Rights Reserved, Defensive Origins LLC
 <!-- DO-MD-FOOTER-END -->
@@ -224,3 +224,4 @@ Copyright - All Rights Reserved, Defensive Origins LLC
 [APT]:https://github.com/DefensiveOrigins/AtomicPurpleTeam
 [necsc241]:https://github.com/DefensiveOrigins/NECSC24/blob/main/9-Others/Attack-Detect-Defend-NECSC-part1%20(1).pdf
 [necsc242]:https://github.com/DefensiveOrigins/NECSC24/blob/main/9-Others/Attack-Detect-Defend-NECSC-part1%20(2).pdf
+[evids2]:https://github.com/DefensiveOrigins/NECSC24/blob/main/9-Others/Cheatsheets/HashcatCheatSheet.v2018.1.pdf
