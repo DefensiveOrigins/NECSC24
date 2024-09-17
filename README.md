@@ -110,11 +110,61 @@ SecurityEvent
 ### Slides
 - Link to slides
 
-### Demo Commands
+### Some additional commands, listed below, can help with attribution. Though, what can we actually do with this info? 
+
+Geo-lookup!!!
 
 ``` bash
-commands
+let ipdata = externaldata(network:string,geoname_id:string,continent_code:string,continent_name:string,country_iso_code:string,country_name:string,is_anonymous_proxy:string,is_satellite_provider:string)
+[@"https://raw.githubusercontent.com/datasets/geoip2-ipv4/master/data/geoip2-ipv4.csv"];
+let IPs = union Event, SecurityEvent
+| where EventID in ("4624","4625")
+    and AccountType != "Machine"
+    and IpAddress != "-" 
+| project IpAddress, TimeGenerated, Activity, EventID;
+IPs
+| evaluate ipv4_lookup(ipdata, IpAddress, network)
+| summarize Count = count() by IpAddress, network, country_iso_code, country_name
+| order by Count 
 ```
+
+Let's check some outbound connections...
+
+```
+let ipdata = externaldata (network:string,geoname_id:string,continent_code:string,continent_name:string,country_iso_code:string,country_name:string,is_anonymous_proxy:string,is_satellite_provider:string)
+[@"https://raw.githubusercontent.com/datasets/geoip2-ipv4/master/data/geoip2-ipv4.csv"];
+let IPs = SysmonParser
+| where EventID == 3
+| where dst_ip != '168.63.129.16'
+| summarize by UserName, Computer, tostring(process_path), tostring(src_ip), tostring(src_port), tostring(dst_ip), tostring(dst_port),  tostring(network_protocol), TimeGenerated;
+IPs
+| evaluate ipv4_lookup(ipdata, dst_ip, network)
+| summarize Count = count() by Computer, dst_ip, process_path, country_name
+| sort by Count
+```
+
+How about a quick peek at the usernames landing in our logs?
+
+```
+SecurityEvent
+| where EventID == 4625
+| summarize count() by TargetAccount
+| order by count_
+```
+
+Let's take a look at arrays associated with the users guessed by specific source IP addresses.
+
+```
+union Event, SecurityEvent
+| where TimeGenerated < ago(30m)
+| where EventID == 4625 or EventID == 4776
+| project Account , IpAddress
+| summarize USERs = make_set(Account) by IpAddress
+| where USERs[1] != ""
+```
+
+
+
 
 
 Copyright - All Rights Reserved, Defensive Origins LLC
