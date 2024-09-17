@@ -29,7 +29,7 @@ This talk discusses
 
 
 
-# Conferecne Talk Content    
+# Conference Talk Content    
 
 ## Attack Detect Defend - Part 1 (~09/17/24 9:00 AM)
 
