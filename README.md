@@ -1,4 +1,4 @@
-# Nebraska Cyber Security Conference 2024 - Talk Slides &; Content
+# Nebraska Cyber Security Conference 2024 - Talk Slides & Content
 
 ## Attack Detect Defend - Jordan Drysdale & Kent Ickler
 
