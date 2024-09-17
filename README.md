@@ -97,6 +97,14 @@ SecurityEvent
 | render timechart
 ```
 
+Let's look at some source IP addresses.
+
+```
+SecurityEvent
+| where EventID == 4625 or EventID == 4776
+| summarize count() by IpAddress
+```
+
 ## Attack Detect Defend - Part 2 (~09/17/24 10:00 AM)
 
 ### Slides
