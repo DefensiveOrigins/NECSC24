@@ -78,6 +78,25 @@ SecurityEvent
 | project TimeGenerated , Activity , Account
 ```
 
+Luis and Heloise are both canary accounts we know and maintain. Let's check on them.
+
+```
+SecurityEvent
+| where EventID == 4624 or EventID == 4625 or EventID == 4776
+| where Account contains "Heloise" or Account contains "luis"
+| project Activity, Account, Computer, IpAddress
+```
+
+Ever seen a password spray in real time logs? 
+
+```
+SecurityEvent
+| where EventID == 4625
+| where TimeGenerated > ago(24h)
+| summarize Count=count() by bin(TimeGenerated, 1m)
+| render timechart
+```
+
 ## Attack Detect Defend - Part 2 (~09/17/24 10:00 AM)
 
 ### Slides
