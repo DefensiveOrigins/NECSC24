@@ -114,7 +114,7 @@ SecurityEvent
 
 Geo-lookup!!!
 
-``` bash
+```kusto
 let ipdata = externaldata(network:string,geoname_id:string,continent_code:string,continent_name:string,country_iso_code:string,country_name:string,is_anonymous_proxy:string,is_satellite_provider:string)
 [@"https://raw.githubusercontent.com/datasets/geoip2-ipv4/master/data/geoip2-ipv4.csv"];
 let IPs = union Event, SecurityEvent
@@ -130,7 +130,7 @@ IPs
 
 Let's check some outbound connections...
 
-```
+```kusto
 let ipdata = externaldata (network:string,geoname_id:string,continent_code:string,continent_name:string,country_iso_code:string,country_name:string,is_anonymous_proxy:string,is_satellite_provider:string)
 [@"https://raw.githubusercontent.com/datasets/geoip2-ipv4/master/data/geoip2-ipv4.csv"];
 let IPs = SysmonParser
@@ -145,7 +145,7 @@ IPs
 
 How about a quick peek at the usernames landing in our logs?
 
-```
+```kusto
 SecurityEvent
 | where EventID == 4625
 | summarize count() by TargetAccount
@@ -154,7 +154,7 @@ SecurityEvent
 
 Let's take a look at arrays associated with the users guessed by specific source IP addresses.
 
-```
+```kusto
 union Event, SecurityEvent
 | where TimeGenerated < ago(30m)
 | where EventID == 4625 or EventID == 4776
@@ -163,6 +163,15 @@ union Event, SecurityEvent
 | where USERs[1] != ""
 ```
 
+This is a failed login perspective based on a timechart. We may have already seen this :D.
+
+```kusto
+SecurityEvent
+| where EventID == 4625
+| where TimeGenerated > ago(4h)
+| summarize Count=count() by bin(TimeGenerated, 1m)
+| render timechart
+```
 
 
 
