@@ -34,7 +34,7 @@ This talk discusses
 ## Attack Detect Defend - Part 1 (~09/17/24 9:00 AM)
 
 ### Slides
-- Link to slides
+- [NECSC24 Attack Detect Defend Part 1][necsc241]
 
 ### Password Spray
 
@@ -108,7 +108,7 @@ SecurityEvent
 ## Attack Detect Defend - Part 2 (~09/17/24 10:00 AM)
 
 ### Slides
-- Link to slides
+- [NECSC24 Attack Detect Defend Part 2][necsc242]
 
 ### Some additional commands, listed below, can help with attribution. Though, what can we actually do with this info? 
 
@@ -222,3 +222,5 @@ Copyright - All Rights Reserved, Defensive Origins LLC
 [1]: https://defensiveorigins.com/
 [2]: https://wildwesthackinfest.com/training/
 [APT]:https://github.com/DefensiveOrigins/AtomicPurpleTeam
+[necsc241]:https://github.com/DefensiveOrigins/NECSC24/blob/main/9-Others/Attack-Detect-Defend-NECSC-part1%20(1).pdf
+[necsc242]:https://github.com/DefensiveOrigins/NECSC24/blob/main/9-Others/Attack-Detect-Defend-NECSC-part1%20(2).pdf
